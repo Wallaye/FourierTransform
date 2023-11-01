@@ -22,7 +22,7 @@ public interface IFourierTransformation
         double[] result = new double[data.Length];
         for (int i = 0; i < data.Length; i++)
         {
-            result[i] = Math.Atan2(data[i].Imaginary, data[i].Real);
+            result[i] = Math.Atan2(data[i].Imaginary, data[i].Real) / data.Length;
         }
         return result;
     }

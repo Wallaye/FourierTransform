@@ -3,7 +3,7 @@ using FourierTransform.Interfaces;
 
 namespace FourierTransform.Transformations;
 
-public class FastFourier : IFourierTransformation
+public class FFT : IFourierTransformation
 {
     public Complex[] Transform(double[] data)
     {
