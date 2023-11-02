@@ -22,9 +22,9 @@ namespace FourierTransform
         public Form1()
         {
             InitializeComponent();
-            InitializePlot(ref frmValues, "Сигналы", "Значения", "");
-            InitializePlot(ref frmAmplitude, "Амплитудный спектр", "Значения", "Частоты");
-            InitializePlot(ref frmValues, "Фазовый спектр", "Значения", "Частоты");
+            InitializeValuesPlot();
+            InitializeAmplPlot();
+            InitializePhasePlot();
             cmbSignalTypeChoice.SelectedIndex = 0;
         }
 
@@ -144,10 +144,14 @@ namespace FourierTransform
 
             double[] restored = transformer.InverseTransform(transformed);
             watch.Stop();
-            lblTime.Text = watch.ElapsedMilliseconds.ToString();
+            lblTime.Text = watch.ElapsedMilliseconds.ToString() + "ms";
 
-            frmValues.Plot.AddSignal(Data, color: Color.Blue);
-            frmValues.Plot.AddSignal(restored, color: Color.Red);
+            var sig1 = frmValues.Plot.AddSignal(Data, color: Color.Blue);
+            sig1.Label = "Src";
+            var sig2 = frmValues.Plot.AddSignal(restored, color: Color.Red);
+            sig2.Label = "Inv";
+
+            frmValues.Plot.Legend();
             frmValues.Refresh();
 
             frmAmplitude.Plot.AddSignal(ApmplitudeSpectre);
@@ -175,21 +179,25 @@ namespace FourierTransform
             return filter;
         }
 
-        private void InitializePlot(ref FormsPlot plot, string title, string YLabel, string XLabel)
+        private void InitializeValuesPlot()
         {
-            if (String.IsNullOrEmpty(title))
-            {
-                plot.Plot.Title(title);
-            }
-            if (String.IsNullOrEmpty(YLabel))
-            {
-                plot.Plot.YLabel(YLabel);
-            }
-            if (String.IsNullOrEmpty(XLabel))
-            {
-                plot.Plot.XLabel(XLabel);
-            }
-            plot.Refresh();
+            frmValues.Plot.Title("Сигналы");
+            frmValues.Plot.YLabel("Значения");
+            frmValues.Refresh();
+        }
+        private void InitializeAmplPlot()
+        {
+            frmAmplitude.Plot.Title("Амплитудный спектр");
+            frmAmplitude.Plot.YLabel("Значения");
+            frmAmplitude.Plot.XLabel("Частоты");
+            frmAmplitude.Refresh();
+        }
+        private void InitializePhasePlot()
+        {
+            frmPhase.Plot.Title("Фазовый спектр");
+            frmPhase.Plot.YLabel("Значения");
+            frmPhase.Plot.XLabel("Частоты");
+            frmPhase.Refresh();
         }
 
         private double[] GeneratePolySignal()

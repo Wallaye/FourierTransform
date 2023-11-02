@@ -57,6 +57,7 @@
             frmAmplitude = new ScottPlot.FormsPlot();
             frmPhase = new ScottPlot.FormsPlot();
             lblTime = new Label();
+            colAmplitude = new ColumnHeader();
             ((System.ComponentModel.ISupportInitialize)numAmplitude).BeginInit();
             ((System.ComponentModel.ISupportInitialize)numFrequency).BeginInit();
             ((System.ComponentModel.ISupportInitialize)numPhase).BeginInit();
@@ -87,7 +88,7 @@
             // 
             // listView1
             // 
-            listView1.Columns.AddRange(new ColumnHeader[] { colName, colFreq, colPhase, colDc });
+            listView1.Columns.AddRange(new ColumnHeader[] { colName, colAmplitude, colFreq, colPhase, colDc });
             listView1.Location = new Point(33, 421);
             listView1.MultiSelect = false;
             listView1.Name = "listView1";
@@ -99,19 +100,19 @@
             // colName
             // 
             colName.Text = "Name";
-            colName.Width = 250;
+            colName.Width = 200;
             // 
             // colFreq
             // 
             colFreq.Text = "Freq";
             colFreq.TextAlign = HorizontalAlignment.Center;
-            colFreq.Width = 125;
+            colFreq.Width = 100;
             // 
             // colPhase
             // 
             colPhase.Text = "Phase";
             colPhase.TextAlign = HorizontalAlignment.Center;
-            colPhase.Width = 125;
+            colPhase.Width = 100;
             // 
             // colDc
             // 
@@ -326,6 +327,12 @@
             lblTime.Size = new Size(0, 25);
             lblTime.TabIndex = 24;
             // 
+            // colAmplitude
+            // 
+            colAmplitude.Text = "Amplitude";
+            colAmplitude.TextAlign = HorizontalAlignment.Center;
+            colAmplitude.Width = 100;
+            // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(11F, 25F);
@@ -402,5 +409,6 @@
         private ScottPlot.FormsPlot frmAmplitude;
         private ScottPlot.FormsPlot frmPhase;
         private Label lblTime;
+        private ColumnHeader colAmplitude;
     }
 }
