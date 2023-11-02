@@ -53,6 +53,10 @@
             label6 = new Label();
             btnGenerate = new Button();
             chkFFT = new CheckBox();
+            frmValues = new ScottPlot.FormsPlot();
+            frmAmplitude = new ScottPlot.FormsPlot();
+            frmPhase = new ScottPlot.FormsPlot();
+            lblTime = new Label();
             ((System.ComponentModel.ISupportInitialize)numAmplitude).BeginInit();
             ((System.ComponentModel.ISupportInitialize)numFrequency).BeginInit();
             ((System.ComponentModel.ISupportInitialize)numPhase).BeginInit();
@@ -118,7 +122,7 @@
             // numAmplitude
             // 
             numAmplitude.DecimalPlaces = 2;
-            numAmplitude.Increment = new decimal(new int[] { 50, 0, 0, 0 });
+            numAmplitude.Increment = new decimal(new int[] { 2, 0, 0, 65536 });
             numAmplitude.Location = new Point(33, 81);
             numAmplitude.Maximum = new decimal(new int[] { 10000, 0, 0, 0 });
             numAmplitude.Name = "numAmplitude";
@@ -272,28 +276,65 @@
             // 
             // btnGenerate
             // 
-            btnGenerate.Location = new Point(482, 293);
+            btnGenerate.Location = new Point(482, 281);
             btnGenerate.Name = "btnGenerate";
             btnGenerate.Size = new Size(173, 68);
             btnGenerate.TabIndex = 19;
             btnGenerate.Text = "Сгенерировать спектры";
             btnGenerate.UseVisualStyleBackColor = true;
+            btnGenerate.Click += btnGenerate_Click;
             // 
             // chkFFT
             // 
             chkFFT.AutoSize = true;
-            chkFFT.Location = new Point(537, 258);
+            chkFFT.Location = new Point(536, 246);
             chkFFT.Name = "chkFFT";
             chkFFT.Size = new Size(59, 29);
             chkFFT.TabIndex = 20;
             chkFFT.Text = "FFT";
             chkFFT.UseVisualStyleBackColor = true;
             // 
+            // frmValues
+            // 
+            frmValues.Location = new Point(714, 12);
+            frmValues.Margin = new Padding(4, 3, 4, 3);
+            frmValues.Name = "frmValues";
+            frmValues.Size = new Size(819, 284);
+            frmValues.TabIndex = 21;
+            // 
+            // frmAmplitude
+            // 
+            frmAmplitude.Location = new Point(714, 302);
+            frmAmplitude.Margin = new Padding(4, 3, 4, 3);
+            frmAmplitude.Name = "frmAmplitude";
+            frmAmplitude.Size = new Size(819, 284);
+            frmAmplitude.TabIndex = 22;
+            // 
+            // frmPhase
+            // 
+            frmPhase.Location = new Point(714, 592);
+            frmPhase.Margin = new Padding(4, 3, 4, 3);
+            frmPhase.Name = "frmPhase";
+            frmPhase.Size = new Size(819, 284);
+            frmPhase.TabIndex = 23;
+            // 
+            // lblTime
+            // 
+            lblTime.AutoSize = true;
+            lblTime.Location = new Point(553, 362);
+            lblTime.Name = "lblTime";
+            lblTime.Size = new Size(0, 25);
+            lblTime.TabIndex = 24;
+            // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(11F, 25F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1582, 903);
+            Controls.Add(lblTime);
+            Controls.Add(frmPhase);
+            Controls.Add(frmAmplitude);
+            Controls.Add(frmValues);
             Controls.Add(chkFFT);
             Controls.Add(btnGenerate);
             Controls.Add(label6);
@@ -357,5 +398,9 @@
         private Label label6;
         private Button btnGenerate;
         private CheckBox chkFFT;
+        private ScottPlot.FormsPlot frmValues;
+        private ScottPlot.FormsPlot frmAmplitude;
+        private ScottPlot.FormsPlot frmPhase;
+        private Label lblTime;
     }
 }

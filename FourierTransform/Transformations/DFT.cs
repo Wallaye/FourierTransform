@@ -33,7 +33,8 @@ public class DFT : IFourierTransformation
                 var exp = new Complex(Math.Cos(power), Math.Sin(power));
                 sum += data[k] * exp;
             }
-            result[n] = sum.Magnitude / data.Length;
+            result[n] = sum.Real / data.Length;
+            //result[n] = sum.Magnitude / data.Length * (sum.Real > 0 ? 1 : -1);
         }
         return result;
     }

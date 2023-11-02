@@ -13,7 +13,49 @@ public class FFT : IFourierTransformation
 
     public double[] InverseTransform(Complex[] data)
     {
-        return Iteration(data, true).Select(d => d.Magnitude / data.Length).ToArray();
+        return Iteration(data, true).Select(d => d.Real).ToArray();
+    }
+
+    private Complex[] Iteration(Complex[] data, bool invert)
+    {
+        int n = data.Length;
+        if (n == 1)
+        {
+            return data;
+        }
+
+        Complex[] result = new Complex[n];
+
+        Complex[] even = new Complex[n / 2];
+        Complex[] odd = new Complex[n / 2];
+
+        for (int i = 0, j = 0; i < n; i+= 2, j++)
+        {
+            even[j] = data[i];
+            odd[j] = data[i + 1];
+        }
+
+        Complex[] evenRes = Iteration(even, invert);
+        Complex[] oddRes = Iteration(odd, invert);
+
+        double ang = 2 * Math.PI / n * (invert ? -1 : 1);
+
+        Complex w = new Complex(1.0, 0.0);
+        Complex wn = new Complex(Math.Cos(ang), Math.Sin(ang));
+
+        for (int i = 0; i < n / 2; ++i)
+        {
+            result[i] = evenRes[i] + w * oddRes[i];
+            result[i + n / 2] = evenRes[i] - w * oddRes[i];
+            if (invert)
+            {
+                result[i] /= 2;
+                result[i + n / 2] /= 2;
+            }
+            w *= wn;
+        }
+
+        return result;
     }
 
     private Complex[] CreateComplexArrayLengthPow2(double[] data)
@@ -40,48 +82,6 @@ public class FFT : IFourierTransformation
                 result[i] = new Complex(0.0, 0.0);
             }
         }
-        return result;
-    }
-
-    private Complex[] Iteration(Complex[] data, bool invert)
-    {
-        int n = data.Length;
-        if (n == 1)
-        {
-            return data;
-        }
-
-        Complex[] result = new Complex[n];
-
-        Complex[] even = new Complex[n / 2];
-        Complex[] odd = new Complex[n / 2];
-
-        for (int i = 0; i < n / 2; i++)
-        {
-            even[i] = data[i];
-            odd[i] = data[i + 1];
-        }
-
-        Complex[] evenRes = Iteration(even, invert);
-        Complex[] oddRes = Iteration(odd, invert);
-
-        double ang = 2 * Math.PI / n * (invert ? -1 : 1);
-
-        Complex w = new Complex(1.0, 0.0);
-        Complex wn = new Complex(Math.Cos(ang), Math.Sin(ang));
-
-        for (int i = 0; i < n / 2; ++i)
-        {
-            result[i] = evenRes[i] + w * oddRes[i];
-            result[i + n / 2] = evenRes[i] - w * oddRes[i];
-            if (invert)
-            {
-                result[i] /= 2;
-                result[i + n / 2] /= 2;
-            }
-            w *= wn;
-        }
-
         return result;
     }
 }

@@ -21,7 +21,7 @@ namespace FourierTransform.Filters
         {
             for (int i = 0; i < SampleRate; i++)
             {
-                if (i < CutOffFrequency)
+                if (i > CutOffFrequency)
                 {
                     input[i] = Complex.Zero;
                 }
