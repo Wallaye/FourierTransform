@@ -10,11 +10,9 @@ public class Noise : ISound
     public double Offset { get; set; } = 0;
     private Random Random { get; set; } = new Random();
 
-    public Noise(double frequency, double amplitude, double offset)
+    public Noise(double amplitude)
     {
-        Frequency = frequency;
         Amplitude = amplitude;
-        Offset = offset;
     }
 
     public double Generate(double tick)
