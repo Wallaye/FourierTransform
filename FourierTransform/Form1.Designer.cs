@@ -45,10 +45,20 @@
             label4 = new Label();
             btnClearList = new Button();
             btnDeleteOne = new Button();
+            chkLowFreq = new CheckBox();
+            chkHighFreq = new CheckBox();
+            numLowFreq = new NumericUpDown();
+            numHighFreq = new NumericUpDown();
+            label5 = new Label();
+            label6 = new Label();
+            btnGenerate = new Button();
+            chkFFT = new CheckBox();
             ((System.ComponentModel.ISupportInitialize)numAmplitude).BeginInit();
             ((System.ComponentModel.ISupportInitialize)numFrequency).BeginInit();
             ((System.ComponentModel.ISupportInitialize)numPhase).BeginInit();
             ((System.ComponentModel.ISupportInitialize)numDutyCycle).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)numLowFreq).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)numHighFreq).BeginInit();
             SuspendLayout();
             // 
             // cmbSignalTypeChoice
@@ -58,7 +68,7 @@
             cmbSignalTypeChoice.Location = new Point(33, 253);
             cmbSignalTypeChoice.Margin = new Padding(5);
             cmbSignalTypeChoice.Name = "cmbSignalTypeChoice";
-            cmbSignalTypeChoice.Size = new Size(223, 39);
+            cmbSignalTypeChoice.Size = new Size(208, 33);
             cmbSignalTypeChoice.TabIndex = 0;
             // 
             // btnAddSignalToList
@@ -77,7 +87,7 @@
             listView1.Location = new Point(33, 421);
             listView1.MultiSelect = false;
             listView1.Name = "listView1";
-            listView1.Size = new Size(644, 457);
+            listView1.Size = new Size(634, 457);
             listView1.TabIndex = 2;
             listView1.UseCompatibleStateImageBehavior = false;
             listView1.View = View.Details;
@@ -112,7 +122,7 @@
             numAmplitude.Location = new Point(33, 81);
             numAmplitude.Maximum = new decimal(new int[] { 10000, 0, 0, 0 });
             numAmplitude.Name = "numAmplitude";
-            numAmplitude.Size = new Size(150, 39);
+            numAmplitude.Size = new Size(150, 32);
             numAmplitude.TabIndex = 3;
             numAmplitude.Value = new decimal(new int[] { 100, 0, 0, 131072 });
             // 
@@ -123,7 +133,7 @@
             numFrequency.Location = new Point(33, 185);
             numFrequency.Maximum = new decimal(new int[] { 10000, 0, 0, 0 });
             numFrequency.Name = "numFrequency";
-            numFrequency.Size = new Size(150, 39);
+            numFrequency.Size = new Size(150, 32);
             numFrequency.TabIndex = 4;
             numFrequency.Value = new decimal(new int[] { 220, 0, 0, 0 });
             // 
@@ -135,7 +145,7 @@
             numPhase.Maximum = new decimal(new int[] { 10000, 0, 0, 0 });
             numPhase.Minimum = new decimal(new int[] { 10000, 0, 0, int.MinValue });
             numPhase.Name = "numPhase";
-            numPhase.Size = new Size(150, 39);
+            numPhase.Size = new Size(150, 32);
             numPhase.TabIndex = 5;
             // 
             // numDutyCycle
@@ -145,7 +155,7 @@
             numDutyCycle.Location = new Point(293, 185);
             numDutyCycle.Maximum = new decimal(new int[] { 1, 0, 0, 0 });
             numDutyCycle.Name = "numDutyCycle";
-            numDutyCycle.Size = new Size(150, 39);
+            numDutyCycle.Size = new Size(150, 32);
             numDutyCycle.TabIndex = 6;
             // 
             // label1
@@ -153,7 +163,7 @@
             label1.AutoSize = true;
             label1.Location = new Point(33, 37);
             label1.Name = "label1";
-            label1.Size = new Size(125, 32);
+            label1.Size = new Size(99, 25);
             label1.TabIndex = 7;
             label1.Text = "Amplitude";
             // 
@@ -162,7 +172,7 @@
             label2.AutoSize = true;
             label2.Location = new Point(33, 146);
             label2.Name = "label2";
-            label2.Size = new Size(125, 32);
+            label2.Size = new Size(99, 25);
             label2.TabIndex = 8;
             label2.Text = "Frequency";
             // 
@@ -171,7 +181,7 @@
             label3.AutoSize = true;
             label3.Location = new Point(293, 37);
             label3.Name = "label3";
-            label3.Size = new Size(76, 32);
+            label3.Size = new Size(62, 25);
             label3.TabIndex = 9;
             label3.Text = "Phase";
             // 
@@ -180,13 +190,13 @@
             label4.AutoSize = true;
             label4.Location = new Point(293, 146);
             label4.Name = "label4";
-            label4.Size = new Size(129, 32);
+            label4.Size = new Size(101, 25);
             label4.TabIndex = 10;
             label4.Text = "Duty Cycle";
             // 
             // btnClearList
             // 
-            btnClearList.Location = new Point(512, 349);
+            btnClearList.Location = new Point(278, 349);
             btnClearList.Name = "btnClearList";
             btnClearList.Size = new Size(165, 51);
             btnClearList.TabIndex = 11;
@@ -204,11 +214,94 @@
             btnDeleteOne.UseVisualStyleBackColor = true;
             btnDeleteOne.Click += btnDeleteOne_Click;
             // 
+            // chkLowFreq
+            // 
+            chkLowFreq.AutoSize = true;
+            chkLowFreq.Location = new Point(482, 89);
+            chkLowFreq.Name = "chkLowFreq";
+            chkLowFreq.Size = new Size(15, 14);
+            chkLowFreq.TabIndex = 13;
+            chkLowFreq.UseVisualStyleBackColor = true;
+            // 
+            // chkHighFreq
+            // 
+            chkHighFreq.AutoSize = true;
+            chkHighFreq.Location = new Point(482, 193);
+            chkHighFreq.Name = "chkHighFreq";
+            chkHighFreq.Size = new Size(15, 14);
+            chkHighFreq.TabIndex = 14;
+            chkHighFreq.UseVisualStyleBackColor = true;
+            // 
+            // numLowFreq
+            // 
+            numLowFreq.DecimalPlaces = 2;
+            numLowFreq.Increment = new decimal(new int[] { 50, 0, 0, 0 });
+            numLowFreq.Location = new Point(503, 81);
+            numLowFreq.Maximum = new decimal(new int[] { 10000, 0, 0, 0 });
+            numLowFreq.Name = "numLowFreq";
+            numLowFreq.Size = new Size(143, 32);
+            numLowFreq.TabIndex = 15;
+            // 
+            // numHighFreq
+            // 
+            numHighFreq.DecimalPlaces = 2;
+            numHighFreq.Increment = new decimal(new int[] { 50, 0, 0, 0 });
+            numHighFreq.Location = new Point(503, 185);
+            numHighFreq.Maximum = new decimal(new int[] { 10000, 0, 0, 0 });
+            numHighFreq.Name = "numHighFreq";
+            numHighFreq.Size = new Size(143, 32);
+            numHighFreq.TabIndex = 16;
+            // 
+            // label5
+            // 
+            label5.AutoSize = true;
+            label5.Location = new Point(503, 37);
+            label5.Name = "label5";
+            label5.Size = new Size(135, 25);
+            label5.TabIndex = 17;
+            label5.Text = "Low Freq Filter";
+            // 
+            // label6
+            // 
+            label6.AutoSize = true;
+            label6.Location = new Point(503, 146);
+            label6.Name = "label6";
+            label6.Size = new Size(141, 25);
+            label6.TabIndex = 18;
+            label6.Text = "High Freq Filter";
+            // 
+            // btnGenerate
+            // 
+            btnGenerate.Location = new Point(482, 293);
+            btnGenerate.Name = "btnGenerate";
+            btnGenerate.Size = new Size(173, 68);
+            btnGenerate.TabIndex = 19;
+            btnGenerate.Text = "Сгенерировать спектры";
+            btnGenerate.UseVisualStyleBackColor = true;
+            // 
+            // chkFFT
+            // 
+            chkFFT.AutoSize = true;
+            chkFFT.Location = new Point(537, 258);
+            chkFFT.Name = "chkFFT";
+            chkFFT.Size = new Size(59, 29);
+            chkFFT.TabIndex = 20;
+            chkFFT.Text = "FFT";
+            chkFFT.UseVisualStyleBackColor = true;
+            // 
             // Form1
             // 
-            AutoScaleDimensions = new SizeF(13F, 31F);
+            AutoScaleDimensions = new SizeF(11F, 25F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1582, 903);
+            Controls.Add(chkFFT);
+            Controls.Add(btnGenerate);
+            Controls.Add(label6);
+            Controls.Add(label5);
+            Controls.Add(numHighFreq);
+            Controls.Add(numLowFreq);
+            Controls.Add(chkHighFreq);
+            Controls.Add(chkLowFreq);
             Controls.Add(btnDeleteOne);
             Controls.Add(btnClearList);
             Controls.Add(label4);
@@ -231,6 +324,8 @@
             ((System.ComponentModel.ISupportInitialize)numFrequency).EndInit();
             ((System.ComponentModel.ISupportInitialize)numPhase).EndInit();
             ((System.ComponentModel.ISupportInitialize)numDutyCycle).EndInit();
+            ((System.ComponentModel.ISupportInitialize)numLowFreq).EndInit();
+            ((System.ComponentModel.ISupportInitialize)numHighFreq).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -254,5 +349,13 @@
         private ColumnHeader colDc;
         private Button btnClearList;
         private Button btnDeleteOne;
+        private CheckBox chkLowFreq;
+        private CheckBox chkHighFreq;
+        private NumericUpDown numLowFreq;
+        private NumericUpDown numHighFreq;
+        private Label label5;
+        private Label label6;
+        private Button btnGenerate;
+        private CheckBox chkFFT;
     }
 }
