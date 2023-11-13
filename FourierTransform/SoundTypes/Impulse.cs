@@ -22,6 +22,6 @@ public class Impulse : ISound
     public double Generate(double tick)
     {
         double T = 1 / Frequency;
-        return (tick % T) / T < 1 / DutyCycle ? Amplitude : -Amplitude;
+        return (tick % T) / T < DutyCycle ? Amplitude : -Amplitude;
     }
 }

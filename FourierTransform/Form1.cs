@@ -15,7 +15,7 @@ namespace FourierTransform
     public partial class Form1 : Form
     {
         private ObservableCollection<ISound> _signals = new();
-        private const int _sampleRate = 16384;
+        private const int _sampleRate = 2048;
         private const int _signalLen = 1;
         private const int _numSamples = _sampleRate * _signalLen;
 

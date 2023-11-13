@@ -32,6 +32,7 @@
             btnAddSignalToList = new Button();
             listView1 = new ListView();
             colName = new ColumnHeader();
+            colAmplitude = new ColumnHeader();
             colFreq = new ColumnHeader();
             colPhase = new ColumnHeader();
             colDc = new ColumnHeader();
@@ -57,7 +58,6 @@
             frmAmplitude = new ScottPlot.FormsPlot();
             frmPhase = new ScottPlot.FormsPlot();
             lblTime = new Label();
-            colAmplitude = new ColumnHeader();
             ((System.ComponentModel.ISupportInitialize)numAmplitude).BeginInit();
             ((System.ComponentModel.ISupportInitialize)numFrequency).BeginInit();
             ((System.ComponentModel.ISupportInitialize)numPhase).BeginInit();
@@ -73,7 +73,7 @@
             cmbSignalTypeChoice.Location = new Point(33, 253);
             cmbSignalTypeChoice.Margin = new Padding(5);
             cmbSignalTypeChoice.Name = "cmbSignalTypeChoice";
-            cmbSignalTypeChoice.Size = new Size(208, 33);
+            cmbSignalTypeChoice.Size = new Size(208, 39);
             cmbSignalTypeChoice.TabIndex = 0;
             // 
             // btnAddSignalToList
@@ -92,7 +92,7 @@
             listView1.Location = new Point(33, 421);
             listView1.MultiSelect = false;
             listView1.Name = "listView1";
-            listView1.Size = new Size(634, 457);
+            listView1.Size = new Size(634, 363);
             listView1.TabIndex = 2;
             listView1.UseCompatibleStateImageBehavior = false;
             listView1.View = View.Details;
@@ -101,6 +101,12 @@
             // 
             colName.Text = "Name";
             colName.Width = 200;
+            // 
+            // colAmplitude
+            // 
+            colAmplitude.Text = "Amplitude";
+            colAmplitude.TextAlign = HorizontalAlignment.Center;
+            colAmplitude.Width = 100;
             // 
             // colFreq
             // 
@@ -127,7 +133,7 @@
             numAmplitude.Location = new Point(33, 81);
             numAmplitude.Maximum = new decimal(new int[] { 10000, 0, 0, 0 });
             numAmplitude.Name = "numAmplitude";
-            numAmplitude.Size = new Size(150, 32);
+            numAmplitude.Size = new Size(150, 39);
             numAmplitude.TabIndex = 3;
             numAmplitude.Value = new decimal(new int[] { 100, 0, 0, 131072 });
             // 
@@ -138,7 +144,7 @@
             numFrequency.Location = new Point(33, 185);
             numFrequency.Maximum = new decimal(new int[] { 10000, 0, 0, 0 });
             numFrequency.Name = "numFrequency";
-            numFrequency.Size = new Size(150, 32);
+            numFrequency.Size = new Size(150, 39);
             numFrequency.TabIndex = 4;
             numFrequency.Value = new decimal(new int[] { 220, 0, 0, 0 });
             // 
@@ -150,7 +156,7 @@
             numPhase.Maximum = new decimal(new int[] { 10000, 0, 0, 0 });
             numPhase.Minimum = new decimal(new int[] { 10000, 0, 0, int.MinValue });
             numPhase.Name = "numPhase";
-            numPhase.Size = new Size(150, 32);
+            numPhase.Size = new Size(150, 39);
             numPhase.TabIndex = 5;
             // 
             // numDutyCycle
@@ -160,7 +166,7 @@
             numDutyCycle.Location = new Point(293, 185);
             numDutyCycle.Maximum = new decimal(new int[] { 1, 0, 0, 0 });
             numDutyCycle.Name = "numDutyCycle";
-            numDutyCycle.Size = new Size(150, 32);
+            numDutyCycle.Size = new Size(150, 39);
             numDutyCycle.TabIndex = 6;
             // 
             // label1
@@ -168,7 +174,7 @@
             label1.AutoSize = true;
             label1.Location = new Point(33, 37);
             label1.Name = "label1";
-            label1.Size = new Size(99, 25);
+            label1.Size = new Size(125, 32);
             label1.TabIndex = 7;
             label1.Text = "Amplitude";
             // 
@@ -177,7 +183,7 @@
             label2.AutoSize = true;
             label2.Location = new Point(33, 146);
             label2.Name = "label2";
-            label2.Size = new Size(99, 25);
+            label2.Size = new Size(125, 32);
             label2.TabIndex = 8;
             label2.Text = "Frequency";
             // 
@@ -186,7 +192,7 @@
             label3.AutoSize = true;
             label3.Location = new Point(293, 37);
             label3.Name = "label3";
-            label3.Size = new Size(62, 25);
+            label3.Size = new Size(76, 32);
             label3.TabIndex = 9;
             label3.Text = "Phase";
             // 
@@ -195,7 +201,7 @@
             label4.AutoSize = true;
             label4.Location = new Point(293, 146);
             label4.Name = "label4";
-            label4.Size = new Size(101, 25);
+            label4.Size = new Size(129, 32);
             label4.TabIndex = 10;
             label4.Text = "Duty Cycle";
             // 
@@ -224,7 +230,7 @@
             chkLowFreq.AutoSize = true;
             chkLowFreq.Location = new Point(482, 89);
             chkLowFreq.Name = "chkLowFreq";
-            chkLowFreq.Size = new Size(15, 14);
+            chkLowFreq.Size = new Size(18, 17);
             chkLowFreq.TabIndex = 13;
             chkLowFreq.UseVisualStyleBackColor = true;
             // 
@@ -233,7 +239,7 @@
             chkHighFreq.AutoSize = true;
             chkHighFreq.Location = new Point(482, 193);
             chkHighFreq.Name = "chkHighFreq";
-            chkHighFreq.Size = new Size(15, 14);
+            chkHighFreq.Size = new Size(18, 17);
             chkHighFreq.TabIndex = 14;
             chkHighFreq.UseVisualStyleBackColor = true;
             // 
@@ -244,7 +250,7 @@
             numLowFreq.Location = new Point(503, 81);
             numLowFreq.Maximum = new decimal(new int[] { 10000, 0, 0, 0 });
             numLowFreq.Name = "numLowFreq";
-            numLowFreq.Size = new Size(143, 32);
+            numLowFreq.Size = new Size(143, 39);
             numLowFreq.TabIndex = 15;
             // 
             // numHighFreq
@@ -254,7 +260,7 @@
             numHighFreq.Location = new Point(503, 185);
             numHighFreq.Maximum = new decimal(new int[] { 10000, 0, 0, 0 });
             numHighFreq.Name = "numHighFreq";
-            numHighFreq.Size = new Size(143, 32);
+            numHighFreq.Size = new Size(143, 39);
             numHighFreq.TabIndex = 16;
             // 
             // label5
@@ -262,7 +268,7 @@
             label5.AutoSize = true;
             label5.Location = new Point(503, 37);
             label5.Name = "label5";
-            label5.Size = new Size(135, 25);
+            label5.Size = new Size(170, 32);
             label5.TabIndex = 17;
             label5.Text = "Low Freq Filter";
             // 
@@ -271,7 +277,7 @@
             label6.AutoSize = true;
             label6.Location = new Point(503, 146);
             label6.Name = "label6";
-            label6.Size = new Size(141, 25);
+            label6.Size = new Size(179, 32);
             label6.TabIndex = 18;
             label6.Text = "High Freq Filter";
             // 
@@ -290,7 +296,7 @@
             chkFFT.AutoSize = true;
             chkFFT.Location = new Point(536, 246);
             chkFFT.Name = "chkFFT";
-            chkFFT.Size = new Size(59, 29);
+            chkFFT.Size = new Size(73, 36);
             chkFFT.TabIndex = 20;
             chkFFT.Text = "FFT";
             chkFFT.UseVisualStyleBackColor = true;
@@ -300,20 +306,20 @@
             frmValues.Location = new Point(714, 12);
             frmValues.Margin = new Padding(4, 3, 4, 3);
             frmValues.Name = "frmValues";
-            frmValues.Size = new Size(819, 284);
+            frmValues.Size = new Size(819, 258);
             frmValues.TabIndex = 21;
             // 
             // frmAmplitude
             // 
-            frmAmplitude.Location = new Point(714, 302);
+            frmAmplitude.Location = new Point(714, 265);
             frmAmplitude.Margin = new Padding(4, 3, 4, 3);
             frmAmplitude.Name = "frmAmplitude";
-            frmAmplitude.Size = new Size(819, 284);
+            frmAmplitude.Size = new Size(819, 247);
             frmAmplitude.TabIndex = 22;
             // 
             // frmPhase
             // 
-            frmPhase.Location = new Point(714, 592);
+            frmPhase.Location = new Point(714, 518);
             frmPhase.Margin = new Padding(4, 3, 4, 3);
             frmPhase.Name = "frmPhase";
             frmPhase.Size = new Size(819, 284);
@@ -324,20 +330,14 @@
             lblTime.AutoSize = true;
             lblTime.Location = new Point(553, 362);
             lblTime.Name = "lblTime";
-            lblTime.Size = new Size(0, 25);
+            lblTime.Size = new Size(0, 32);
             lblTime.TabIndex = 24;
-            // 
-            // colAmplitude
-            // 
-            colAmplitude.Text = "Amplitude";
-            colAmplitude.TextAlign = HorizontalAlignment.Center;
-            colAmplitude.Width = 100;
             // 
             // Form1
             // 
-            AutoScaleDimensions = new SizeF(11F, 25F);
+            AutoScaleDimensions = new SizeF(13F, 31F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1582, 903);
+            ClientSize = new Size(1582, 814);
             Controls.Add(lblTime);
             Controls.Add(frmPhase);
             Controls.Add(frmAmplitude);
